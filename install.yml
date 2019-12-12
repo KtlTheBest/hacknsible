@@ -1,0 +1,7 @@
+---
+- name: Start installing
+  hosts: localhost
+  become: true
+
+  roles:
+    - machine.fedora
