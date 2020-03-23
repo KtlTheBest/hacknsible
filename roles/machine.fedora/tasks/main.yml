@@ -1,3 +1,5 @@
 ---
-- include_tasks: beef.yml
+  - include: pexpect.yml
+  - include: nmap.yml
+  - include: beef.yml
 

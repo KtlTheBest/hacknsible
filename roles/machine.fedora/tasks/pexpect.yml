@@ -1,0 +1,4 @@
+---
+  - name: Install pexpect Python module
+    pip:
+      name: pexpect

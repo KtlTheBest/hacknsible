@@ -1,5 +1,25 @@
 ---
-
 beef_ruby:
-    - ruby
-    - ruby-devel
+  - ruby
+  - ruby-devel
+
+install_script:
+  - git
+  - make
+  - gcc
+  - openssl-devel
+  - gcc-c++
+  - patch
+  - readline
+  - readline-devel
+  - zlib
+  - zlib-devel
+  - libyaml-devel
+  - libffi-devel
+  - bzip2
+  - autoconf
+  - automake
+  - libtool
+  - bison
+  - sqlite-devel
+  - nodejs

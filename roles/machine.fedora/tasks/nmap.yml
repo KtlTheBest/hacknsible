@@ -1,0 +1,5 @@
+---
+  - name: Install nmap
+    dnf:
+      name: nmap
+      state: latest

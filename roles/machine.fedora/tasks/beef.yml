@@ -1,26 +1,33 @@
 ---
-- tasks:
-    - name: Install Ruby on Fedora
-        dnf: 
-            name: "{{ beef_ruby }}"
-            state: latest
-        become: true
+  - name: Install Ruby on Fedora
+    dnf: 
+      name: "{{ beef_ruby }}"
+      state: latest
+    become: true
 
-    - name: Clone BeEF
-        git:
-            repo: "git clone https://github.com/beefproject/beef"
-            dest: /root/tools/beef 
-            clone: yes
-        become: true
+  - name: Install script dependencies
+    dnf:
+      name: "{{ install_script }}"
 
-    - name: Install BeEF
-      shell: /root/tools/beef/install
-      changed_when: false
-      become: true
+  - name: Clone BeEF
+    git:
+      repo: "https://github.com/beefproject/beef"
+      dest: /root/tools/beef 
+      clone: yes
+    become: true
 
-    - name: Create Symlink
-      file:
-          src: /root/tools/beef/beef
-          dst: /bin/beef
-          state: link
-      become: true
+  - name: Install BeEF
+    expect:
+      command: /root/tools/beef/install
+      responses:
+        \(Y/n\)\?: Y 
+        #shell: "/root/tools/beef/install << Y"
+    changed_when: false
+    become: true
+
+  - name: Create Symlink
+    file:
+      src: /root/tools/beef/beef
+      dst: /bin/beef
+      state: link
+    become: true
